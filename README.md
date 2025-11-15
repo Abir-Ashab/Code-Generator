@@ -5,7 +5,6 @@ This is a full-stack application for generating C++ code using AI.
 ## Tech Stack
 - Frontend: React with Tailwind CSS
 - Backend: Node.js with Express
-- Database: MongoDB Cloud
 - File Storage: MinIO
 - AI: Google Gemini
 
@@ -39,7 +38,6 @@ This is a full-stack application for generating C++ code using AI.
 
 ### Prerequisites
 - Node.js installed
-- MongoDB Atlas account (for cloud DB)
 - Google Gemini API key
 - MinIO server running locally
 
