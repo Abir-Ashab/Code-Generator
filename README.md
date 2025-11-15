@@ -2,11 +2,19 @@
 
 This is a full-stack application for generating C++ code using AI.
 
-## Tech Stack
-- Frontend: React with Tailwind CSS
-- Backend: Node.js with Express
-- File Storage: MinIO
-- AI: Google Gemini
+## Backend Implementations
+
+The project includes two backend implementations for comparison:
+
+### Node.js (server.js)
+- Uses Express.js framework
+- Custom BLEU score implementation using n-gram matching
+- Manual tokenization with natural language processing
+
+### Python (server.py) 
+- Uses Flask framework
+- BLEU score calculation using NLTK library's sentence_bleu function with smoothing
+- Proper n-gram evaluation and brevity penalty
 
 ## Quick Start with Docker
 
@@ -43,9 +51,9 @@ This is a full-stack application for generating C++ code using AI.
 
 ### Backend Setup
 1. Navigate to `backend` folder
-2. Install dependencies: `npm install`
+2. Install dependencies: `npm install` (for Node.js) or `pip install -r requirements.txt` (for Python)
 3. Update `.env` with your Gemini API key
-4. Start the server: `npm start`
+4. Start the server: `npm start` (Node.js) or `python server.py` (Python)
 
 ### Frontend Setup
 1. Navigate to `frontend` folder
