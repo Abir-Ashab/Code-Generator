@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function App() {
   const [query, setQuery] = useState('');
+  const [reference, setReference] = useState('');
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -10,7 +11,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/generate-code', { query });
+      const res = await axios.post('http://localhost:5000/generate-code', { query, reference });
       setResponse(res.data);
     } catch (error) {
       console.error('Error:', error);
@@ -32,6 +33,13 @@ function App() {
             onChange={(e) => setQuery(e.target.value)}
             required
           />
+          <textarea
+            className="w-full p-2 border border-gray-300 rounded mb-4"
+            rows="4"
+            placeholder="Enter reference code (optional, for BLEU score)..."
+            value={reference}
+            onChange={(e) => setReference(e.target.value)}
+          />
           <button
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
@@ -44,6 +52,9 @@ function App() {
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Generated Code:</h2>
             <pre className="bg-gray-200 p-2 rounded mt-2 overflow-x-auto">{response.code}</pre>
+            {response.bleuScore !== null && (
+              <p className="mt-2 text-sm text-gray-600">BLEU Score: {response.bleuScore.toFixed(4)}</p>
+            )}
             <a
               href={response.fileUrl}
               download

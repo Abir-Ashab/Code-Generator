@@ -60,8 +60,9 @@ This is a full-stack application for generating C++ code using AI.
 ## Usage
 1. Open frontend at http://localhost:3000
 2. Enter a query like "write a code to add two numbers"
-3. Click Generate Code
-4. View the generated code and download the .cpp file
+3. Optionally enter reference code for BLEU score evaluation
+4. Click Generate Code
+5. View the generated code, BLEU score (if reference provided), and download the .cpp file
 
 ## API
-- POST /generate-code: { query: string } -> { fileUrl: string, code: string }
+- POST /generate-code: { query: string, reference?: string } -> { fileUrl: string, code: string, bleuScore?: number }
